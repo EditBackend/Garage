@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .detail-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .price {
+            color: #28a745;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .category-badge {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .btn-custom {
+            background-color: #17a2b8;
+            color: white;
+        }
+    </style>
+    <title>Garage Detail</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 detail-card">
+                <img src="{{x.img.url}}" class="img-fluid rounded" alt="Garage Image">
+                <h2 class="mt-3">Garage Name: <strong>{{ x.name }}</strong></h2>
+                <h4 class="price">Narxi: <strong>{{ x.price }} so‘m</strong></h4>
+                <p class="lead mt-2">{{ bio }}</p>
+                <span class="category-badge">{{ x.category }}</span>
+                <div class="mt-4">
+                    <button class="btn btn-custom">Qo‘shimcha ma'lumot</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
