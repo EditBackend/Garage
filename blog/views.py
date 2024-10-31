@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .forms import EmailForm
+from .forms import EmailForm,ContactForm
 from .models import Cars ,Tag
 
 # Create your views here.
@@ -29,7 +29,23 @@ def index(request):
     return  render(request, 'index.html', context=context)
 
 def contact(request):
-    return  render(request, 'contact.html', context={})
+    cars = Cars.objects.all()
+    carousel = cars.filter(tag=Tag.objects.get(name="carousel"))
+    if request.method == "POST":
+        contactForm = ContactForm(request.POST)
+        if contactForm.is_valid():
+            contactForm.save()
+            return HttpResponse("<h1>sorov qabul qilindi<h1>")
+        else:
+            return HttpResponse("<h1>malumotni tog'ri kirit<h1>")
+    else:
+        contactForm = ContactForm()
+    contex = {
+        "contactForm": contactForm,
+        "carousel": carousel,
+    }
+
+    return  render(request, 'contact.html', context=contex)
 
 def detail(request, id ):
     car = Cars.objects.get(id=id)
@@ -37,6 +53,7 @@ def detail(request, id ):
         "x": car
     }
     return render(request,'carsDetail.html', context=context)
+
 
 
 

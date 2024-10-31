@@ -36,7 +36,9 @@ class Email(models.Model):
 class Contact(models.Model):
     name = models.CharField(max_length=100)
     bio = models.CharField(max_length=100)
-    img = models.ImageField(upload_to='contacts/img')
+    subject = models.CharField(max_length=100)
+    contactemail = models.CharField(max_length=100)
+
 
     def __str__(self):
         return self.name
